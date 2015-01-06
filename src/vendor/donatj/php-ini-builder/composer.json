@@ -1,0 +1,20 @@
+{
+    "name": "donatj/php-ini-builder",
+    "description": "PHP `parse_ini_string` Compatible INI Builder",
+    "require-dev": {
+        "donatj/drop": "*",
+		"phpunit/phpunit": "3.7.*"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jesse Donat",
+            "email": "donatj@gmail.com"
+        }
+    ],
+	"autoload": {
+		"psr-4": {
+			"donatj\\Ini\\": "src/"
+		}
+	}
+}

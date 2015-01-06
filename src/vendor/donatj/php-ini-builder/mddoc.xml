@@ -1,0 +1,52 @@
+<mddoc>
+	<docpage target="README.md" autoloader="psr0" autoloader-root="src">
+		<section title="PHP INI Builder">
+			<text><![CDATA[
+[![Latest Stable Version](https://poser.pugx.org/donatj/php-ini-builder/v/stable.png)](https://packagist.org/packages/donatj/php-ini-builder)
+[![License](https://poser.pugx.org/donatj/php-ini-builder/license.png)](https://packagist.org/packages/donatj/php-ini-builder)
+[![Build Status](https://travis-ci.org/donatj/PhpIniBuilder.svg?branch=master)](https://travis-ci.org/donatj/PhpIniBuilder)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/donatj/PhpIniBuilder/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/donatj/PhpIniBuilder/?branch=master)
+
+Create PHP `parse_ini_string` / `parse_ini_file` compatible INI strings from associative arrays.]]></text>
+			<section title="Requirements">
+				<text>- PHP 5.3+</text>
+			</section>
+			<section title="Installing">
+				<text><![CDATA[
+
+PHP INI Builder is available through Packagist via Composer
+
+```json
+{
+    "require": {
+        "donatj/php-ini-builder": "~0.1.3"
+    }
+}
+```
+				]]></text>
+			</section>
+			<section title="Example">
+				<text>Here is a simple example script:</text>
+				<source name="example/example.php" lang="php" />
+				<text>Which outputs:</text>
+				<source lang="php"><![CDATA[[Title]
+str = 'awesome'
+int = 7
+flt = 10.2
+
+[Title 2]
+bool = true
+arr[] = 'a'
+arr[] = 'b'
+arr[] = 'c'
+arr[6] = 'd'
+arr[] = 'e'
+arr[key] = 'f'
+]]></source>
+			</section>
+			<section title="Documentation">
+				<file name="src/Builder.php" />
+			</section>
+		</section>
+	</docpage>
+</mddoc>

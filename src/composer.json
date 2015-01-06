@@ -1,0 +1,6 @@
+{
+    "require": {
+        "trello/trello": "dev-master",
+        "donatj/php-ini-builder": "~0.1.3"
+    }
+}
