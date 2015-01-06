@@ -2,7 +2,7 @@
 
 class App extends Base {
 
-	public $name                  		= 'Trello for Alfred';
+	public $app_name               		= 'Trello for Alfred';
 	public $version               		= 0.8;
 	public $bundle                		= 'com.davidberube.alfred-trello';
 	
@@ -36,7 +36,7 @@ class App extends Base {
 	public function __construct()
 	{		
 		$this->Config = new Config( $this->getWorkflowPath(), $this->config_file );
-		$this->Trello = new Trello( $this->getToken() );
+		$this->Trello = new Trello( $this, $this->getToken() );
 		$this->Setup  = new Setup( $this );
 	}
 
@@ -203,7 +203,7 @@ class App extends Base {
 
 	public function openAuthUrl( $input )
 	{
-		$url = "https://trello.com/1/connect?key={$this->Trello->app_key}&name={$this->name}&response_type=token&scope=read,write&expiration=never";
+		$url = "https://trello.com/1/connect?key=" . $this->trello['app_key'] . "&name=" . $this->app_name . "&response_type=token&scope=read,write&expiration=never";
 		
 		exec("open '{$url}'");
 		echo "Authorize Trello, copy the token and run trello:setup";

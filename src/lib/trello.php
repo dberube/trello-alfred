@@ -1,36 +1,22 @@
 <?php
 
 use Trello\Client;
-#use GuzzleHttp\Client;
 
 Class Trello {
 
-	// protected static $app_key           = 'e84053a367c64476aec7547f533736ca';
-	// protected static $api_endpoint_base = 'https://api.trello.com/1';
-	
-	protected static $user_token_del = null;
-	protected static $list_id        = null;
-	protected static $url            = null;
-	
-	public $app_key                  = 'e84053a367c64476aec7547f533736ca';
+	public $App;
 
-	protected $api_endpoint_base     = 'https://api.trello.com/1';
-	
-	protected $app_api_key           = 'e84053a367c64476aec7547f533736ca';
-	protected $auth_return_url       = 'https://trello.com/1/token/approve/';
-	
-	protected $get_boards_endpoint   = '/boards/4eea4ffc91e31d1746000046?lists=open&list_fields=name&fields=name,desc&key=::app_key&token=::user_token';
+	protected $user_token = null;
 
-	protected $user_token 				= null;
-
-	public function __construct( $user_token=null )
+	public function __construct( $App, $user_token=null )
 	{
+		$this->App = $App;
 		$this->user_token = $user_token;
 	}
 
 	public function buildURL( $board_id, $user_token )
 	{
-		return $this->api_endpoint_base . '/boards/' . $board_id . '?lists=open&list_fields=name&fields=name,desc&key=' . $this->app_key . '&token=' . $user_token;
+		return $this->App->trello['api_endpoint_base'] . '/boards/' . $board_id . '?lists=open&list_fields=name&fields=name,desc&key=' . $this->App->trello['app_key'] . '&token=' . $user_token;
 	}
 
 	public function addCard( $title, $description, $labels, $board_id, $user_token )
@@ -84,12 +70,12 @@ Class Trello {
 		if ( $trello_list_id ) 
 		{
 			
-			$ch = curl_init( $this->api_endpoint_base . "/cards" );
+			$ch = curl_init( $this->App->trello['api_endpoint_base'] . "/cards" );
 
 			// 
 			// Add validation key and token to the post
 			// 
-			$data['key']    = $this->app_key;
+			$data['key']    = $this->App->trello['app_key'];
 			$data['token']  = $user_token;
 			$data['idList'] = $trello_list_id;
 			
@@ -133,7 +119,7 @@ Class Trello {
 			$token = $this->user_token;
 		}
 
-		$TrelloClient = new Client( $this->app_api_key );
+		$TrelloClient = new Client( $this->App->trello['app_key'] );
 
 		$Boards = $TrelloClient->get( $_endpoint_url, array( 'token' => $token ) );
 
@@ -149,7 +135,7 @@ Class Trello {
 			$token = $this->user_token;
 		}
 
-		$TrelloClient = new Client( $this->app_api_key );
+		$TrelloClient = new Client( $this->App->trello['app_key'] );
 
 		$Lists = $TrelloClient->get( $_endpoint_url, array( 'token' => $token ) );
 
@@ -165,7 +151,7 @@ Class Trello {
 			$token = $this->user_token;
 		}
 
-		$TrelloClient = new Client( $this->app_api_key );
+		$TrelloClient = new Client( $this->App->trello['app_key'] );
 
 		$Labels = $TrelloClient->get( $_endpoint_url, array( 'token' => $token ) );
 
@@ -199,7 +185,7 @@ Class Trello {
 				'boards'	=> 'all'
 			);
 			
-			$TrelloClient = new Client( $this->app_api_key );
+			$TrelloClient = new Client( $this->App->trello['app_key'] );
 
 			$Member = $TrelloClient->get( $_endpoint_url, $_payload );
 		}
@@ -215,8 +201,8 @@ Class Trello {
 	{
 		$endpoint_url = 'member/dberube';
 		
-		$TrelloClient = new Client( $this->app_api_key );
+		$TrelloClient = new Client( $this->App->trello['app_key'] );
 		
-		return $TrelloClient->getAuthorizationUrl( $app_name, $this->auth_return_url, array('read', 'write', 'account'), 'never', 'fragment' );
+		return $TrelloClient->getAuthorizationUrl( $app_name, $this->App->trello['auth_return_url'], array('read', 'write', 'account'), 'never', 'fragment' );
 	}
 }
