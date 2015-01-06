@@ -1,10 +1,10 @@
 Trello for Alfred v0.8
 =============================
 
-<!--![Trello Workflow for Alfred Icon](http://files.dtb.me.s3.amazonaws.com/public/trello-alfred/icon.png)-->
-<img src="http://files.dtb.me/public/trello-alfred/screenshot-1.png" style="width: 600px;"/>
-<img src="http://files.dtb.me/public/trello-alfred/screenshot-2.png" style="width: 300px; vertical-align: top"/>
-<img src="http://files.dtb.me/public/trello-alfred/screenshot-3.png" style="width: 300px; vertical-align: top"/>
+![](http://files.dtb.me/public/trello-alfred/screenshot-1.small.png)
+
+| ![](http://files.dtb.me/public/trello-alfred/screenshot-2.png) | ![](http://files.dtb.me/public/trello-alfred/screenshot-2.png) |
+|---|---|
 
 **Description:** Trello Workflow for the Mac OS app **Alfred v2** that *allows you to quickly create new cards with labels* on your **Trello** board lists.
 
