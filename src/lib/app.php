@@ -4,7 +4,7 @@ class App extends Base {
 
 	public $app_name               		= 'Trello for Alfred';
 	public $version               		= 0.8;
-	public $bundle                		= 'com.davidberube.alfred-trello';
+	public $bundle                		= 'com.davidberube.trello-alfred';
 	
 	public $trello 				  		= array(
 
