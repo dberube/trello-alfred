@@ -315,7 +315,17 @@ class Workflows {
 			return false;
 		endif;
 
-		exec( 'defaults read "'. $b .'" '.$a, $out );	// Execute system call to read plist value
+		//exec( 'defaults read "' . $b . '" ' . $a, $out );	// Execute system call to read plist value
+
+		$out = shell_exec( 'defaults read "' . $b . '" ' . $a );
+
+		if ($a != 'bundleid')
+		{
+			echo "\r\n ========== \r\n";
+			var_dump( $out );
+			echo "\r\n ========== \r\n";
+			die;
+		}
 
 		if ( $out == "" ):
 			return false;
