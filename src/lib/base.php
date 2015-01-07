@@ -192,4 +192,39 @@ class Base {
 		return $return;
 	}
 
+	public function getUserData( $username )
+	{
+		return $this->Trello->getMember( $username );
+	}
+
+	public function getBoardId( $board_name, $user_id, $token )
+	{
+		$boards = $this->Trello->getBoards( $user_id, $token );
+
+		foreach ($boards as $board)
+		{
+			if (strtolower(trim( $board_name )) == strtolower(trim( $board['name'] )))
+			{
+				return $board['id'];
+			}
+		}
+
+		return false;
+	}
+
+	public function getListId( $list_name, $board_id, $token )
+	{
+		$lists = $this->Trello->getLists( $board_id, $token );
+
+		foreach ($lists as $list)
+		{
+			if (strtolower(trim( $list_name )) == strtolower(trim( $list['name'] )))
+			{
+				return $list['id'];
+			}
+		}
+
+		return false;
+	}
+
 }

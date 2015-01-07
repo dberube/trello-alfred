@@ -155,24 +155,49 @@ class App extends Base {
 		}
 		else
 		{
-			$_labels       = array();
+			$_labels_match = array();
 			$labels        = null;
 
 			$regex_pattern = '((?:#){1}[\w\d-_]{2,140})';
-			preg_match_all( $regex_pattern, $this->query, $_labels);
+			preg_match_all( $regex_pattern, $this->query, $_labels_match);
 
-			if (!empty( $_labels[0] ) && is_array( $_labels[0] ))
+			if (!empty( $_labels_match[0] ) && is_array( $_labels_match[0] ))
 			{
-				foreach ($_labels[0] as $_label)
+				foreach ($_labels_match[0] as $_label)
 				{
 					$labels .= $_label . ',';
 				}
 			}
 
+			$_board_name_match = array();
+			$board_name        = null;
+
+			$regex_pattern = '((?:!@){1}[\w\d-_]{2,140})';
+			preg_match_all( $regex_pattern, $this->query, $_board_name_match);
+
+			if (!empty( $_board_name_match[0] ) && is_array( $_board_name_match[0] ))
+			{
+				foreach ($_board_name_match[0] as $_board_name)
+				{
+					$board_name = $_board_name;
+				}
+			}
+
+			if (!empty( $board_name ))
+			{
+				$this->query = str_replace( $board_name, '', $this->query );
+				$board_name  = str_replace( '!@', '', $board_name );
+			}
+			else
+			{
+				$board_name = $this->get('trello.board_name');
+			}
+
+
 			$query       = explode( $this->title_separator, $this->query );
 			$title       = $query[0];
 			$description = (empty($query[1])) ? null : $query[1];
-			$subtitle    = 'Add this card to ' . ucwords( $this->get('trello.board_name') ) . $this->option_separator . ucwords( $this->get('trello.list_name') );
+			$subtitle    = 'Add this card to ' . ucwords( $board_name) . $this->option_separator . ucwords( $this->get('trello.list_name') );
 
 			if (!empty( $labels ))
 			{
@@ -189,7 +214,7 @@ class App extends Base {
 			$this->buildResult(
 				null, 
 				0, 
-				'addcard "' . $title . '" "' . $description . '" "' . $labels . '"',
+				'addcard "' . $title . '" "' . $description . '" "' . $labels . '" "' . $board_name . '"',
 				'Add card: ' . stripslashes( $title ) . ' to Trello...',
 				$subtitle, 
 				$Workflow->path() . '/src/images/icon.png', 
@@ -242,6 +267,7 @@ class App extends Base {
 		$description = $data[1];
 		$_labels 	 = (empty( $data[2] ) ? null : explode(',', str_replace('#', '', $data[2])) );
 		$labels      = null;
+		$list_name   = (empty( $data[3] ) ? null : trim( $data[3] ) );
 
 
 		if (!empty( $_labels ))
@@ -263,9 +289,25 @@ class App extends Base {
 			}
 		}
 
-		$this->Trello->addCard( $title, $description, $labels, $this->get('trello.board_id'), $this->getToken() );
+		if (!empty( $list_name ))
+		{
+			$list_id = $this->getListId( $list_name, $this->get('trello.board_id'), $this->getToken() );
+
+			if (!$list_id)
+			{
+				$list_id   = $this->get('trello.list_id');
+				$list_name = $this->get('trello.list_name');
+			}
+		}
+		else
+		{
+			$list_id   = $this->get('trello.list_id');
+			$list_name = $this->get('trello.list_name');
+		}
+
+		$this->Trello->addCard( $title, $description, $labels, $this->get('trello.board_id'), $list_id, $this->getToken() );
 		
-		echo "Card {$title} added to " . ucwords($this->get('trello.board_name')) . $this->option_separator . ucwords($this->get('trello.list_name'));
+		echo "Card {$title} added to " . ucwords($this->get('trello.board_name')) . $this->option_separator . ucwords( $list_name );
 		die;
 	}
 }

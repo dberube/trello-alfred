@@ -1,11 +1,11 @@
-Trello for Alfred v0.8
+Trello for Alfred v0.9
 =============================
 
 ![Trello for Alfred Workflow Screenshot](http://files.dtb.me/trello-alfred/screenshots.png)
 
 **Description:** Trello Workflow for the Mac OS app **Alfred v2** that *allows you to quickly create new cards with labels* on your **Trello** board lists.
 
-**Version:** 0.8
+**Version:** 0.9
 
 Installation & Setup
 -------------------------------
@@ -30,7 +30,7 @@ Installation & Setup
 Usage
 -------------------------------
 
--	trello `card_title` `;` `description` `#label` `#another-label`
+-	trello `card_title` `;` `description` `#label` `#another-label` `!@listName`
 	-	**Required**:
 		-	`card_title`
 	-	**Optional**:
@@ -38,8 +38,10 @@ Usage
 			-	To end the card title and start typing the description, use the `;` character
 		-	`#labels`
 			-	To add labels to the card, simple prefix the label name with a `#` character
+		-	`!@listName`
+			-	Add the card to a list other than your default list
 	-	**Example Usage:**
-		-	`trello This is my Card's title; This is my card's description... #myLabel #myOtherLabel`
+		-	`trello This is my Card's title; This is my card's description... #myLabel #myOtherLabel !@mySpecificList`
 
 Credits
 -------------------------------

@@ -19,7 +19,7 @@ Class Trello {
 		return $this->App->trello['api_endpoint_base'] . '/boards/' . $board_id . '?lists=open&list_fields=name&fields=name,desc&key=' . $this->App->trello['app_key'] . '&token=' . $user_token;
 	}
 
-	public function addCard( $title, $description, $labels, $board_id, $user_token )
+	public function addCard( $title, $description, $labels, $board_id, $list_id, $user_token )
 	{
 		$card_data = array(
 
@@ -27,12 +27,10 @@ Class Trello {
 			'desc'      => $description,
 			'labels'    => $labels,
 			'due'       => null,
-			'list_name' => 'Incoming',
+			'list_id'   => $list_id,
 			'pos'       => 'bottom',
 
 		);
-
-		// echo '###<pre>'; print_r($card_data); echo '</pre>###'; die;
 
 		$endpoint_url = $this->buildURL( $board_id, $user_token );
 		
@@ -61,9 +59,10 @@ Class Trello {
 
 		foreach ($lists as $list) 
 		{
-			if ($list->name == $data['list_name']) 
+			if ($list->id == $data['list_id'])
 			{
-				$trello_list_id = $list->id;
+				$trello_list_id   = $list->id;
+				$trello_list_name = $list->name;
 			}
 		}
 
