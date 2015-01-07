@@ -57,19 +57,19 @@ class Setup {
 
 		if (!empty( $this->data['username'] ))
 		{
-			$_user                        = $this->getUserData( $this->data['username'] );
+			$_user                        = $this->App->getUserData( $this->data['username'] );
 			$this->data['user_id']        = $_user['id'];
 			$this->data['user_full_name'] = $_user['fullName'];
 		}
 
 		if (!empty( $this->data['board_name'] ))
 		{
-			$this->data['board_id']        = $this->getBoardId( $this->data['board_name'] );
+			$this->data['board_id']        = $this->App->getBoardId( $this->data['board_name'], $this->data['user_id'], $this->data['token'] );
 		}
 
 		if (!empty( $this->data['list_name'] ))
 		{
-			$this->data['list_id']        = $this->getListId( $this->data['list_name'], $this->data['board_id'] );
+			$this->data['list_id']        = $this->App->getListId( $this->data['list_name'], $this->data['board_id'], $this->data['token'] );
 		}
 	}
 
@@ -260,40 +260,5 @@ class Setup {
 	private function _menuEnd()
 	{
 		return $this->App->returnResults( $this->App->getWorkflow() );
-	}
-
-	protected function getUserData( $username )
-	{
-		return $this->App->Trello->getMember( $username );
-	}
-
-	protected function getBoardId( $board_name )
-	{
-		$boards = $this->App->Trello->getBoards( $this->data['user_id'], $this->data['token'] );
-
-		foreach ($boards as $board)
-		{
-			if (strtolower(trim( $board_name )) == strtolower(trim( $board['name'] )))
-			{
-				return $board['id'];
-			}
-		}
-
-		return false;
-	}
-
-	protected function getListId( $list_name, $board_id )
-	{
-		$lists = $this->App->Trello->getLists( $board_id, $this->data['token'] );
-
-		foreach ($lists as $list)
-		{
-			if (strtolower(trim( $list_name )) == strtolower(trim( $list['name'] )))
-			{
-				return $list['id'];
-			}
-		}
-
-		return false;
 	}
 }
