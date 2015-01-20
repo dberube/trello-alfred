@@ -15,7 +15,6 @@ Installation & Setup
 	-	This will open a browser window and ask for permission to access your Trello account
 -	Once you approve the permissions a token will be displayed, *copy this to your clipboard*
 -	Open Alfred and enter the trigger: **trello:setup**
-	-	Select **Setup Trello**
 	-	Follow the on screen instructions:
 		-	Paste your Trello authorization token
 		-	Enter in your Trello username
