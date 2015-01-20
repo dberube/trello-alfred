@@ -154,7 +154,7 @@ class Setup {
 			10, 
 			$this->data['query'], 
 			'Paste your Trello authorization token above, then press enter...',
-			'If you do not have this, run the following command in Alfred: trello:auth',
+			'If you do not have this, run the following command in Alfred: trello:openauthurl',
 			$this->App->makeFullPath( '/src/images/icon.png' ),
 			'no',
 			$this->App->buildQueryChain(array( $this->data['query'] ))
