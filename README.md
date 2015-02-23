@@ -1,11 +1,11 @@
-Trello for Alfred v0.9
+Trello for Alfred v0.9.1
 =============================
 
 ![Trello for Alfred Workflow Screenshot](http://files.dtb.me/trello-alfred/screenshots.png)
 
 **Description:** Trello Workflow for the Mac OS app **Alfred v2** that *allows you to quickly create new cards with labels* on your **Trello** board lists.
 
-**Version:** 0.9
+**Version:** 0.9.1
 
 Installation & Setup
 -------------------------------
