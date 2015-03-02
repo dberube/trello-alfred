@@ -11,12 +11,10 @@ Installation & Setup
 -------------------------------
 
 -	Double click on the trello.alfredworkfow file to have Alfred v2 automatically install this workflow
--	Open Alfred and enter the trigger: **trello**
-	-	Select **Authorize Trello**
+-	Open Alfred and enter the trigger: **trello:openauthurl**
 	-	This will open a browser window and ask for permission to access your Trello account
 -	Once you approve the permissions a token will be displayed, *copy this to your clipboard*
--	Open Alfred and enter the trigger: **trello** again
-	-	Select **Setup Trello**
+-	Open Alfred and enter the trigger: **trello:setup**
 	-	Follow the on screen instructions:
 		-	Paste your Trello authorization token
 		-	Enter in your Trello username
@@ -24,7 +22,7 @@ Installation & Setup
 		-	Select which list on your board you would like cards to be added to
 		-	Save!
 -	To change your Trello settings once they are already set, you can access the *Authorize* and *Setup* options with:
-	-	`trello:auth`
+	-	`trello:openauthurl`
 	-	`trello:setup`
 
 Usage
