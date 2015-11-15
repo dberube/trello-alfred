@@ -108,8 +108,8 @@ class Base {
 	{
 		$Workflow = $this->getWorkflow();
 
-		$input = strtolower(trim( $input ));
-		$arg   = strtolower(trim( $arg ));
+		$input = trim( $input );
+		$arg   = trim( $arg );
 
 	    $result = 0;
 
