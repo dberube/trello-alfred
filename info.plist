@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.davidberube.trello-alfred</string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>connections</key>
+	<dict>
+		<key>5984601C-11A2-4BFD-81A6-0CFFA91B7CB3</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>B0924F39-5325-4D31-A38B-2E05ABE35CBC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>A4A6A2E1-CC28-442E-9EAE-3FF15243F4F2</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5984601C-11A2-4BFD-81A6-0CFFA91B7CB3</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>B0924F39-5325-4D31-A38B-2E05ABE35CBC</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A0CDB58B-985D-4E92-8120-97CF7C0640C2</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>E00C31CF-E574-4C54-BFC7-3654D997D7DE</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5984601C-11A2-4BFD-81A6-0CFFA91B7CB3</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>David Berube</string>
+	<key>description</key>
+	<string>An Alfred workflow to integrate with Trello</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Trello for Alfred v0.9</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>hotkey</key>
+				<integer>17</integer>
+				<key>hotmod</key>
+				<integer>1179648</integer>
+				<key>hotstring</key>
+				<string>T</string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>E00C31CF-E574-4C54-BFC7-3654D997D7DE</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>68</integer>
+				<key>keyword</key>
+				<string>trello</string>
+				<key>runningsubtext</key>
+				<string>Loading data, please wait...</string>
+				<key>script</key>
+				<string>php -f src/workflow.php "{query}"</string>
+				<key>title</key>
+				<string>Trello for Alfred Workflow</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>5984601C-11A2-4BFD-81A6-0CFFA91B7CB3</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>output</key>
+				<integer>1</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Trello for Alfred</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>A0CDB58B-985D-4E92-8120-97CF7C0640C2</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>64</integer>
+				<key>script</key>
+				<string>php -f src/workflow.php {query}</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>B0924F39-5325-4D31-A38B-2E05ABE35CBC</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>3</integer>
+				<key>argumenttext</key>
+				<string>trello</string>
+				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>0</integer>
+				<key>hotstring</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>A4A6A2E1-CC28-442E-9EAE-3FF15243F4F2</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Trello for Alfred v0.8
+=============================
+
+![Trello for Alfred Workflow Screenshot](http://files.dtb.me/trello-alfred/screenshots.png)
+
+**Description:** Trello Workflow for the Mac OS app **Alfred v2** that *allows you to quickly create new cards with labels* on your **Trello** board lists.
+
+**Version:** 0.8
+
+Installation &amp; Setup
+-------------------------------
+
+-	Double click on the trello.alfredworkfow file to have Alfred v2 automatically install this workflow
+-	Open Alfred and enter the trigger: **trello**
+	-	Select **Authorize Trello**
+	-	This will open a browser window and ask for permission to access your Trello account
+-	Once you approve the permissions a token will be displayed, *copy this to your clipboard*
+-	Open Alfred and enter the trigger: **trello** again
+	-	Select **Setup Trello**
+	-	Follow the on screen instructions:
+		-	Paste your Trello authorization token
+		-	Enter in your Trello username
+		-	Select which Trello Board you would like to use
+		-	Select which list on your board you would like cards to be added to
+		-	Save!
+-	To change your Trello settings once they are already set, you can access the *Authorize* and *Setup* options with:
+	-	`trello:auth`
+	-	`trello:setup`
+
+Usage
+-------------------------------
+
+-	trello `card_title` `;` `description` `#label` `#another-label`
+	-	**Required**:
+		-	`card_title`
+	-	**Optional**:
+		-	`description`
+			-	To end the card title and start typing the description, use the `;` character
+		-	`#labels`
+			-	To add labels to the card, simple prefix the label name with a `#` character
+	-	**Example Usage:**
+		-	`trello This is my Card's title; This is my card's description... #myLabel #myOtherLabel`
+
+Credits
+-------------------------------
+
+This workflow is based on this other [Trello Workflow](https://github.com/MikoMagni/Alfred-for-Trello) from [MikoMagni](https://github.com/MikoMagni/). [Trello API wrapper](https://github.com/ashwinks/Trello-API-PHP-Wrapper) and [PHP INI Builder](https://github.com/donatj/PhpIniBuilder) are also used.</string>
+	<key>uidata</key>
+	<dict>
+		<key>5984601C-11A2-4BFD-81A6-0CFFA91B7CB3</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>A0CDB58B-985D-4E92-8120-97CF7C0640C2</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>A4A6A2E1-CC28-442E-9EAE-3FF15243F4F2</key>
+		<dict>
+			<key>ypos</key>
+			<real>180</real>
+		</dict>
+		<key>B0924F39-5325-4D31-A38B-2E05ABE35CBC</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>E00C31CF-E574-4C54-BFC7-3654D997D7DE</key>
+		<dict>
+			<key>ypos</key>
+			<real>80</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>https://github.com/dberube/trello-alfred</string>
+</dict>
+</plist>

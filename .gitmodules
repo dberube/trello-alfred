@@ -1,0 +1,3 @@
+[submodule "src/vendor/trello/trello"]
+	path = src/vendor/trello/trello
+	url = git://github.com/ashwinks/Trello-API-PHP-Wrapper.git
