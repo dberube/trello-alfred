@@ -2,7 +2,8 @@
 
 1. Fork this repo on GitHub
 2. Clone your fork
-3. Start experimenting!
+3. `git submodule init && git submodule update`
+4. Start experimenting!
 
 ## Building the workflow package
 
